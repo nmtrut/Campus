@@ -9,6 +9,7 @@
 - マイページ
 - ランキング
 - 検索
+*未対応です
 
 ## 構成
 
@@ -36,6 +37,8 @@
 - PHP 5.4 (C4SAと同じ)
 - MySQL 5.5 (C4SAと同じ)
 
+##投稿画像の格納フォルダ
+- 同ディレクトリ内に"images"を作成
 
 ## DBの設定について
 ```connectDB()``` メソッドを使う場合は、config.phpに自身のDBの情報を書いてください。(C4SAの共有MySQLから確認する)
@@ -63,3 +66,35 @@ require_once('./functions.php');
 $db = connectDB();
 
 ```
+
+##DB
+- membersテーブル
+    -id
+    -name
+    -picture
+    -mail
+    -password
+    -student(学生区分)
+    -daigaku
+    -gakuseki
+    -created
+    -modified
+- articlesテーブル
+    -id
+    -user_id(=members.id)
+    -pictures
+    -created
+    -modified
+- favaratesテーブル
+    -id
+    -user_id(ログイン中のユーザー)
+    -article.id
+    -viewer.id(対象画像の投稿者)
+    -points(=1)
+    -created
+    -modified
+- themesテーブル
+    -id
+    -theme
+    -created
+    -modified
